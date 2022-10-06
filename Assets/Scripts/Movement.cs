@@ -40,10 +40,12 @@ public class Movement : MonoBehaviour
     public ParticleSystem jumpParticle;
     public ParticleSystem wallJumpParticle;
     public ParticleSystem slideParticle;
+    public Animator deathAnimation;
 
     // Start is called before the first frame update
     void Start()
     {
+        Application.targetFrameRate = 60;
         coll = GetComponent<Collision>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<AnimationScript>();
@@ -57,9 +59,10 @@ public class Movement : MonoBehaviour
         float xRaw = Input.GetAxisRaw("Horizontal");
         float yRaw = Input.GetAxisRaw("Vertical");
         Vector2 dir = new Vector2(x, y);
-
+        CheckDeath();
         Walk(dir);
-        anim.SetHorizontalMovement(x, y, rb.velocity.y);
+        Climb(dir);
+       // anim.SetHorizontalMovement(x, y, rb.velocity.y);
 
         if (coll.onWall && Input.GetButton("Fire3") && canMove)
         {
@@ -110,7 +113,7 @@ public class Movement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
-            anim.SetTrigger("jump");
+           // anim.SetTrigger("jump");
 
             if (coll.onGround)
                 Jump(Vector2.up, false);
@@ -166,13 +169,15 @@ public class Movement : MonoBehaviour
 
     private void Dash(float x, float y)
     {
+        if (!canMove)
+            return;
         Camera.main.transform.DOComplete();
         Camera.main.transform.DOShakePosition(.2f, .5f, 14, 90, false, true);
         FindObjectOfType<RippleEffect>().Emit(Camera.main.WorldToViewportPoint(transform.position));
 
         hasDashed = true;
 
-        anim.SetTrigger("dash");
+       // anim.SetTrigger("dash");
 
         rb.velocity = Vector2.zero;
         Vector2 dir = new Vector2(x, y);
@@ -261,10 +266,39 @@ public class Movement : MonoBehaviour
         {
             rb.velocity = Vector2.Lerp(rb.velocity, (new Vector2(dir.x * speed, rb.velocity.y)), wallJumpLerp * Time.deltaTime);
         }
-    }
+    } 
+    private void Climb(Vector2 dir)
+    {
+        if (!canMove)
+            return;
 
+        if (wallGrab)
+            return;
+
+        if (coll.onIvy &&  dir.y!=0)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, dir.y * speed);
+        }
+       /* else
+        {
+            rb.velocity = Vector2.Lerp(rb.velocity, (new Vector2(dir.x * speed, rb.velocity.y)), wallJumpLerp * Time.deltaTime);
+        }*/
+    }
+    private void CheckDeath()
+    {
+        if(coll.onDeath && canMove)
+        {
+            canMove = false;
+            deathAnimation.enabled = true;
+            deathAnimation.GetComponent<SpriteRenderer>().enabled = true;
+            deathAnimation.transform.SetParent(null);
+            gameObject.SetActive(false);
+        }
+    }
     private void Jump(Vector2 dir, bool wall)
     {
+        if (!canMove)
+            return;
         slideParticle.transform.parent.localScale = new Vector3(ParticleSide(), 1, 1);
         ParticleSystem particle = wall ? wallJumpParticle : jumpParticle;
 
