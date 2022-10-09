@@ -7,12 +7,14 @@ public class DisappearingTilemap : MonoBehaviour
 {
     public float disappearMultiplier;
     public float offset;
-    public float opacity;
+    public float comeBackTime;
+
+    private float opacity;
     private Coroutine _disappearCoroutine,_appearCoroutine;
     private Collider2D _collider;
     private SpriteRenderer _spriteRenderer;
     private Color _spriteRendererColor;
-    // Start is called before the first frame update
+
     void Start()
     {
         _collider=GetComponent<Collider2D>();
@@ -21,7 +23,6 @@ public class DisappearingTilemap : MonoBehaviour
         opacity = _spriteRendererColor.a;
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -72,7 +73,7 @@ public class DisappearingTilemap : MonoBehaviour
         {
             _collider.enabled = false;
             opacity = 0;
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(comeBackTime);
             opacity = 1;
             AssignSpriteColor();
             _collider.enabled = true;

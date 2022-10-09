@@ -62,7 +62,7 @@ public class Movement : MonoBehaviour
         CheckDeath();
         Walk(dir);
         Climb(dir);
-       // anim.SetHorizontalMovement(x, y, rb.velocity.y);
+        anim.SetHorizontalMovement(x, y, rb.velocity.y);
 
         if (coll.onWall && Input.GetButton("Fire3") && canMove)
         {
@@ -113,7 +113,7 @@ public class Movement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
-           // anim.SetTrigger("jump");
+            anim.SetTrigger("jump");
 
             if (coll.onGround)
                 Jump(Vector2.up, false);
@@ -177,7 +177,7 @@ public class Movement : MonoBehaviour
 
         hasDashed = true;
 
-       // anim.SetTrigger("dash");
+        anim.SetTrigger("dash");
 
         rb.velocity = Vector2.zero;
         Vector2 dir = new Vector2(x, y);
