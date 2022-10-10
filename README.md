@@ -5,6 +5,3 @@
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-* Amazing pixelart from [Nate Kling](https://twitter.com/natekling)
