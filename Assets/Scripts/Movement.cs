@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour
     [HideInInspector]
     public Rigidbody2D rb;
     private AnimationScript anim;
+    private DialogInteraction dialogInteraction;
 
     [Space]
     [Header("Stats")]
@@ -49,11 +50,14 @@ public class Movement : MonoBehaviour
         coll = GetComponent<Collision>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<AnimationScript>();
+        dialogInteraction = GetComponent<DialogInteraction>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (dialogInteraction.DialogUI.IsOpen) return;
+
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
         float xRaw = Input.GetAxisRaw("Horizontal");
@@ -153,8 +157,6 @@ public class Movement : MonoBehaviour
             side = -1;
             anim.Flip(side);
         }
-
-
     }
 
     void GroundTouch()
