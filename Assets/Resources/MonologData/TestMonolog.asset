@@ -16,9 +16,9 @@ MonoBehaviour:
   RightSpeaker: {fileID: 0}
   dialog:
   - speaker: 0
-    text: a
+    text: Maraba Bayan
   - speaker: 0
-    text: b
+    text: "Benim Ad\u0131m Matuhan Betin"
   - speaker: 0
     text: c
   - speaker: 0
