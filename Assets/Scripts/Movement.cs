@@ -42,7 +42,14 @@ public class Movement : MonoBehaviour
     public ParticleSystem wallJumpParticle;
     public ParticleSystem slideParticle;
     public Animator deathAnimation;
+    public DynamicJoystick dynamicJoystick;
 
+    [Space]
+    [Header("Buttons")]
+    public bool jumpButton;
+    public bool jumped;
+    public bool dashButton;
+    public bool climbButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -58,17 +65,45 @@ public class Movement : MonoBehaviour
     {
         if (dialogInteraction.DialogUI.IsOpen) return;
 
-        float x = Input.GetAxis("Horizontal");
+        /*float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
         float xRaw = Input.GetAxisRaw("Horizontal");
-        float yRaw = Input.GetAxisRaw("Vertical");
+        float yRaw = Input.GetAxisRaw("Vertical");*/
+        float x = dynamicJoystick.Direction.x;
+        float y = dynamicJoystick.Direction.y;
+        float xRaw = 0;
+        float yRaw = 0;
+        if(dynamicJoystick.Direction.x!=0)
+        {
+            if(dynamicJoystick.Direction.x>0.3f)
+            {
+                xRaw = 1;
+            }
+            else if(dynamicJoystick.Direction.x<-0.3f)
+            {
+                xRaw = -1;
+
+            }
+        }
+        if (dynamicJoystick.Direction.y != 0)
+        {
+            if (dynamicJoystick.Direction.y > 0.3f)
+            {
+                yRaw = 1;
+            }
+            else if(dynamicJoystick.Direction.y<-0.3f)
+            {
+                yRaw = -1;
+            }
+        }
+       // Vector2 dir = dynamicJoystick.Direction;
         Vector2 dir = new Vector2(x, y);
         CheckDeath();
         Walk(dir);
         Climb(dir);
         anim.SetHorizontalMovement(x, y, rb.velocity.y);
 
-        if (coll.onWall && Input.GetButton("Fire3") && canMove)
+        if (coll.onWall && climbButton && canMove)
         {
             if(side != coll.wallSide)
                 anim.Flip(side*-1);
@@ -76,7 +111,7 @@ public class Movement : MonoBehaviour
             wallSlide = false;
         }
 
-        if (Input.GetButtonUp("Fire3") || !coll.onWall || !canMove)
+        if (!climbButton || !coll.onWall || !canMove)
         {
             wallGrab = false;
             wallSlide = false;
@@ -115,7 +150,7 @@ public class Movement : MonoBehaviour
         if (!coll.onWall || coll.onGround)
             wallSlide = false;
 
-        if (Input.GetButtonDown("Jump"))
+        if (jumped)
         {
             anim.SetTrigger("jump");
 
@@ -125,7 +160,7 @@ public class Movement : MonoBehaviour
                 WallJump();
         }
 
-        if (Input.GetButtonDown("Fire1") && !hasDashed)
+        if (dashButton && !hasDashed)
         {
             if(xRaw != 0 || yRaw != 0)
                 Dash(xRaw, yRaw);
@@ -185,6 +220,7 @@ public class Movement : MonoBehaviour
         Vector2 dir = new Vector2(x, y);
 
         rb.velocity += dir.normalized * dashSpeed;
+        dashButton = false;
         StartCoroutine(DashWait());
     }
 
@@ -308,6 +344,7 @@ public class Movement : MonoBehaviour
         rb.velocity += dir * jumpForce;
 
         particle.Play();
+        jumped = false;
     }
 
     IEnumerator DisableMovement(float time)
