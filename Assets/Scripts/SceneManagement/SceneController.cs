@@ -1,18 +1,16 @@
-﻿ using System.IO;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
+using UnityEditor;
 
-public class SceneController : MonoBehaviour
+[CustomEditor(typeof(DropDown))]
+public class SceneController : Editor
 {
-    public static string[] scenes;
-
-    void Awake()
+    public override void OnInspectorGUI()
     {
-        var sceneNumber = SceneManager.sceneCountInBuildSettings;
-        scenes = new string[sceneNumber];
-        for (int i = 0; i < sceneNumber; i++)
-        {
-            scenes[i] = Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i));
-        }
+        base.OnInspectorGUI();
+
+        DropDown script = (DropDown)target;
+
+        GUIContent arrayLabel = new GUIContent("NextScene");
+        script.sceneIdx = EditorGUILayout.Popup(arrayLabel, script.sceneIdx, script.scenes);
     }
 }
