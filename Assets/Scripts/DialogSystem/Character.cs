@@ -2,9 +2,9 @@ using System;
 using UnityEngine;
 
 public enum CharacterEnum { 
-    Mert, 
-    Alois, 
-    Manav    
+    Hido,
+    Bilgehan,
+    Murat
 }
 
 // Custom serializable class
