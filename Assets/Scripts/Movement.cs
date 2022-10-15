@@ -50,7 +50,7 @@ public class Movement : MonoBehaviour
     public bool jumped;
     public bool dashButton;
     public bool climbButton;
-    // Start is called before the first frame update
+
     void Start()
     {
         Application.targetFrameRate = 60;
@@ -60,58 +60,78 @@ public class Movement : MonoBehaviour
         dialogInteraction = GetComponent<DialogInteraction>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (dialogInteraction.DialogUI.IsOpen) return;
 
-        /*float x = Input.GetAxis("Horizontal");
+        float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
         float xRaw = Input.GetAxisRaw("Horizontal");
-        float yRaw = Input.GetAxisRaw("Vertical");*/
+        float yRaw = Input.GetAxisRaw("Vertical");
+
+        /*
         float x = dynamicJoystick.Direction.x;
         float y = dynamicJoystick.Direction.y;
         float xRaw = 0;
         float yRaw = 0;
-        if(dynamicJoystick.Direction.x!=0)
+        if (dynamicJoystick.Direction.x != 0)
         {
-            if(dynamicJoystick.Direction.x>0.3f)
+            if (dynamicJoystick.Direction.x > 0.3f)
             {
                 xRaw = 1;
             }
-            else if(dynamicJoystick.Direction.x<-0.3f)
+            else if (dynamicJoystick.Direction.x < -0.3f)
             {
                 xRaw = -1;
 
             }
         }
+
         if (dynamicJoystick.Direction.y != 0)
         {
             if (dynamicJoystick.Direction.y > 0.3f)
             {
                 yRaw = 1;
             }
-            else if(dynamicJoystick.Direction.y<-0.3f)
+            else if (dynamicJoystick.Direction.y < -0.3f)
             {
                 yRaw = -1;
             }
-        }
-       // Vector2 dir = dynamicJoystick.Direction;
+        } 
+        */
+
+        // Vector2 dir = dynamicJoystick.Direction;
         Vector2 dir = new Vector2(x, y);
         CheckDeath();
         Walk(dir);
         Climb(dir);
         anim.SetHorizontalMovement(x, y, rb.velocity.y);
 
+        /*
         if (coll.onWall && climbButton && canMove)
         {
-            if(side != coll.wallSide)
-                anim.Flip(side*-1);
+            if (side != coll.wallSide)
+                anim.Flip(side * -1);
             wallGrab = true;
             wallSlide = false;
         }
 
         if (!climbButton || !coll.onWall || !canMove)
+        {
+            wallGrab = false;
+            wallSlide = false;
+        }
+        */
+
+        if (coll.onWall && Input.GetButton("Fire3") && canMove)
+        {
+            if (side != coll.wallSide)
+                anim.Flip(side * -1);
+            wallGrab = true;
+            wallSlide = false;
+        }
+
+        if (Input.GetButtonUp("Fire3") || !coll.onWall || !canMove)
         {
             wallGrab = false;
             wallSlide = false;
@@ -122,12 +142,12 @@ public class Movement : MonoBehaviour
             wallJumped = false;
             GetComponent<BetterJumping>().enabled = true;
         }
-        
+
         if (wallGrab && !isDashing)
         {
             rb.gravityScale = 0;
-            if(x > .2f || x < -.2f)
-            rb.velocity = new Vector2(rb.velocity.x, 0);
+            if (x > .2f || x < -.2f)
+                rb.velocity = new Vector2(rb.velocity.x, 0);
 
             float speedModifier = y > 0 ? .5f : 1;
 
@@ -138,7 +158,7 @@ public class Movement : MonoBehaviour
             rb.gravityScale = 3;
         }
 
-        if(coll.onWall && !coll.onGround)
+        if (coll.onWall && !coll.onGround)
         {
             if (x != 0 && !wallGrab)
             {
@@ -150,6 +170,7 @@ public class Movement : MonoBehaviour
         if (!coll.onWall || coll.onGround)
             wallSlide = false;
 
+        /*
         if (jumped)
         {
             anim.SetTrigger("jump");
@@ -162,7 +183,24 @@ public class Movement : MonoBehaviour
 
         if (dashButton && !hasDashed)
         {
-            if(xRaw != 0 || yRaw != 0)
+            if (xRaw != 0 || yRaw != 0)
+                Dash(xRaw, yRaw);
+        }
+        */
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            anim.SetTrigger("jump");
+
+            if (coll.onGround)
+                Jump(Vector2.up, false);
+            if (coll.onWall && !coll.onGround)
+                WallJump();
+        }
+
+        if (Input.GetButtonDown("Fire1") && !hasDashed)
+        {
+            if (xRaw != 0 || yRaw != 0)
                 Dash(xRaw, yRaw);
         }
 
@@ -172,7 +210,7 @@ public class Movement : MonoBehaviour
             groundTouch = true;
         }
 
-        if(!coll.onGround && groundTouch)
+        if (!coll.onGround && groundTouch)
         {
             groundTouch = false;
         }
@@ -182,7 +220,7 @@ public class Movement : MonoBehaviour
         if (wallGrab || wallSlide || !canMove)
             return;
 
-        if(x > 0)
+        if (x > 0)
         {
             side = 1;
             anim.Flip(side);
@@ -220,7 +258,7 @@ public class Movement : MonoBehaviour
         Vector2 dir = new Vector2(x, y);
 
         rb.velocity += dir.normalized * dashSpeed;
-        dashButton = false;
+        // dashButton = false;
         StartCoroutine(DashWait());
     }
 
@@ -272,14 +310,14 @@ public class Movement : MonoBehaviour
 
     private void WallSlide()
     {
-        if(coll.wallSide != side)
-         anim.Flip(side * -1);
+        if (coll.wallSide != side)
+            anim.Flip(side * -1);
 
         if (!canMove)
             return;
 
         bool pushingWall = false;
-        if((rb.velocity.x > 0 && coll.onRightWall) || (rb.velocity.x < 0 && coll.onLeftWall))
+        if ((rb.velocity.x > 0 && coll.onRightWall) || (rb.velocity.x < 0 && coll.onLeftWall))
         {
             pushingWall = true;
         }
@@ -304,7 +342,7 @@ public class Movement : MonoBehaviour
         {
             rb.velocity = Vector2.Lerp(rb.velocity, (new Vector2(dir.x * speed, rb.velocity.y)), wallJumpLerp * Time.deltaTime);
         }
-    } 
+    }
     private void Climb(Vector2 dir)
     {
         if (!canMove)
@@ -313,18 +351,18 @@ public class Movement : MonoBehaviour
         if (wallGrab)
             return;
 
-        if (coll.onIvy &&  dir.y!=0)
+        if (coll.onIvy && dir.y != 0)
         {
             rb.velocity = new Vector2(rb.velocity.x, dir.y * speed);
         }
-       /* else
-        {
-            rb.velocity = Vector2.Lerp(rb.velocity, (new Vector2(dir.x * speed, rb.velocity.y)), wallJumpLerp * Time.deltaTime);
-        }*/
+        /* else
+         {
+             rb.velocity = Vector2.Lerp(rb.velocity, (new Vector2(dir.x * speed, rb.velocity.y)), wallJumpLerp * Time.deltaTime);
+         }*/
     }
     private void CheckDeath()
     {
-        if(coll.onDeath && canMove)
+        if (coll.onDeath && canMove)
         {
             canMove = false;
             deathAnimation.enabled = true;
@@ -344,7 +382,7 @@ public class Movement : MonoBehaviour
         rb.velocity += dir * jumpForce;
 
         particle.Play();
-        jumped = false;
+        // jumped = false;
     }
 
     IEnumerator DisableMovement(float time)
