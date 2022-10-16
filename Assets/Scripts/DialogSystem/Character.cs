@@ -4,7 +4,11 @@ using UnityEngine;
 public enum CharacterEnum { 
     Hido,
     Bilgehan,
-    Murat
+    Murat,
+    İrem,
+    Süheyla,
+    Berk,
+    Emir
 }
 
 // Custom serializable class
