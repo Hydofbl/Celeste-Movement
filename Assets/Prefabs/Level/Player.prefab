@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 4
   m_Sprite: {fileID: -1734298994132575547, guid: 2ab6df1d8d4f2504aa8254ee7a914494,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -369,6 +369,11 @@ MonoBehaviour:
   wallJumpParticle: {fileID: 4198215690149114832}
   slideParticle: {fileID: 4198215690331114182}
   deathAnimation: {fileID: 3037551057064948042}
+  dynamicJoystick: {fileID: 0}
+  jumpButton: 0
+  jumped: 0
+  dashButton: 0
+  climbButton: 0
 --- !u!114 &4198215689787181844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,6 +388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fallMultiplier: 3
   lowJumpMultiplier: 8
+  _movementCs: {fileID: 4198215689787181847}
 --- !u!114 &4198215689787181845
 MonoBehaviour:
   m_ObjectHideFlags: 0
