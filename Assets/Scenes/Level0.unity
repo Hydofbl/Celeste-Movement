@@ -62248,9 +62248,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneIdx: 0
   scenes:
-  - SampleScene
-  - TutorialScene
+  - MainMenu
+  - Level0
   - Level1
+  - Level2
+  transitionTime: 1
 --- !u!1 &5845432053115066464
 GameObject:
   m_ObjectHideFlags: 0
@@ -63035,6 +63037,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3424b7437980a164ca42d23e7fa83f38, type: 3}
+--- !u!95 &6182082442037736274 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2304382267811726673, guid: 3424b7437980a164ca42d23e7fa83f38,
+    type: 3}
+  m_PrefabInstance: {fileID: 6182082442037736273}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6182082442116482713
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63057,6 +63065,11 @@ PrefabInstance:
       propertyPath: pogScore
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6729644301039203432, guid: 382c7191a7dc522409521edfe0717093,
+        type: 3}
+      propertyPath: blackScreen
+      value: 
+      objectReference: {fileID: 6182082442037736274}
     - target: {fileID: 6729644301039203432, guid: 382c7191a7dc522409521edfe0717093,
         type: 3}
       propertyPath: pogImageMovePos

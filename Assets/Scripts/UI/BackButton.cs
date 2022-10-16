@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class StartButton : MonoBehaviour, IPointerDownHandler
+public class BackButton : MonoBehaviour, IPointerDownHandler
 {
-    public bool isClicked;
     private MainMenu _mainMenu;
     // Start is called before the first frame update
     void Start()
@@ -20,16 +19,6 @@ public class StartButton : MonoBehaviour, IPointerDownHandler
     }
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (!isClicked)
-        {
-            isClicked = true;
-            StartCoroutine(OpenGame());
-        }
-    }
-    public IEnumerator OpenGame()
-    {
-        yield return new WaitForSeconds(0);
-        FindObjectOfType<DropDown>().StartContinueToNextScene();
-        _mainMenu.CloseAll();
+        _mainMenu.GetMainMenu();
     }
 }

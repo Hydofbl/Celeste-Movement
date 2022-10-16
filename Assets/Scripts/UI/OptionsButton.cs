@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class StartButton : MonoBehaviour, IPointerDownHandler
+public class OptionsButton : MonoBehaviour, IPointerDownHandler
 {
     public bool isClicked;
     private MainMenu _mainMenu;
@@ -20,16 +20,6 @@ public class StartButton : MonoBehaviour, IPointerDownHandler
     }
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (!isClicked)
-        {
-            isClicked = true;
-            StartCoroutine(OpenGame());
-        }
-    }
-    public IEnumerator OpenGame()
-    {
-        yield return new WaitForSeconds(0);
-        FindObjectOfType<DropDown>().StartContinueToNextScene();
-        _mainMenu.CloseAll();
+        _mainMenu.GetOptionsMenu();
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,7 +10,7 @@ public class DropDown : MonoBehaviour
     public int sceneIdx = 0;
     [HideInInspector]
     public string[] scenes;
-
+    public float transitionTime;
     void Awake()
     {
         var sceneNumber = SceneManager.sceneCountInBuildSettings;
@@ -19,20 +20,39 @@ public class DropDown : MonoBehaviour
             scenes[i] = Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i));
         }
     }
-    public void GetNextScene()
+    public IEnumerator GetNextScene()
     {
+        UIManager.Instance.StartTransition();
+        yield return new WaitForSeconds(transitionTime);
         sceneIdx = PlayerPrefs.GetInt("Level", 0);
         sceneIdx++;
-            PlayerPrefs.SetInt("Level", sceneIdx);
-
-        if(sceneIdx>scenes.Length)
+        sceneIdx %= scenes.Length;
+        if(sceneIdx==0)
         {
-            sceneIdx = 1;
-            PlayerPrefs.SetInt("Level", sceneIdx);
+            sceneIdx++;
         }
-        else
+        PlayerPrefs.SetInt("Level", sceneIdx);
+        SceneManager.LoadScene(scenes[sceneIdx], LoadSceneMode.Single);
+    }
+    public void StartContinueToNextScene()
+    {
+        StartCoroutine(ContinueToNextScene());
+    }
+    public IEnumerator ContinueToNextScene()
+    {
+        UIManager.Instance.StartTransition();
+        yield return new WaitForSeconds(transitionTime);
+        sceneIdx = PlayerPrefs.GetInt("Level", 0);
+        sceneIdx %= scenes.Length;
+        if (sceneIdx == 0)
         {
-            SceneManager.LoadScene(scenes[sceneIdx], LoadSceneMode.Single);
+            sceneIdx++;
         }
+        PlayerPrefs.SetInt("Level", sceneIdx);
+        SceneManager.LoadScene(scenes[sceneIdx], LoadSceneMode.Single);
+    }
+    public string GetCurrentSceneName()
+    {
+        return SceneManager.GetActiveScene().name;
     }
 }

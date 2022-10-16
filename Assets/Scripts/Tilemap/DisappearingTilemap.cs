@@ -92,6 +92,5 @@ public class DisappearingTilemap : MonoBehaviour
     public void AssignSpriteColor()
     {
         _spriteRenderer.color = new Color(_spriteRendererColor.r, _spriteRendererColor.g, _spriteRendererColor.b, opacity);
-        print(_spriteRendererColor.r);
     }
 }

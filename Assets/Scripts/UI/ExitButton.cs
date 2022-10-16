@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class NPC : MonoBehaviour
+public class ExitButton : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -13,13 +14,10 @@ public class NPC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnPointerDown(PointerEventData eventData)
     {
-        if(collision.CompareTag("Player"))
-        {
-            StartCoroutine(FindObjectOfType<DropDown>().GetNextScene());
-        }
+        Application.Quit();
     }
 }

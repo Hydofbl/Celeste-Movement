@@ -126,8 +126,8 @@ public class DialogUI : MonoBehaviour
         IsOpen = false;
         dialogBox.SetActive(false);
         textLabel.text = String.Empty;
-
-        FindObjectOfType<DropDown>().GetNextScene();
+        StartCoroutine(
+                FindObjectOfType<DropDown>().GetNextScene());
     }
     
     private void CloseSpeaker(GameObject speaker)

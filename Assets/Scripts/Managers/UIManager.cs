@@ -12,11 +12,16 @@ public class UIManager : Singleton<UIManager>
     public GameObject pogImageMovePos;
     public TextMeshProUGUI pogText;
     public int pogScore;
+    public Animator blackScreen;
     // Start is called before the first frame update
     void Start()
     {
-        pogScore = PlayerPrefs.GetInt("PogScore", 0);
+        if (!FindObjectOfType<DropDown>().GetCurrentSceneName().Equals("MainMenu"))
+        {
+            blackScreen.enabled = true;
         AssignPogValue();
+        } 
+        pogScore = PlayerPrefs.GetInt("PogScore", 0);
     }
 
     // Update is called once per frame
@@ -33,5 +38,10 @@ public class UIManager : Singleton<UIManager>
     public void AssignPogValue()
     {
         pogText.text = "x" + pogScore;
+    }
+    public void StartTransition()
+    {
+        blackScreen.enabled = true;
+        blackScreen.SetTrigger("start");
     }
 }

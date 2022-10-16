@@ -783,7 +783,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 385202405}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.1000004, y: -2.4699998, z: -10}
+  m_LocalPosition: {x: -2.1000006, y: -2.4699998, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 463156798}
@@ -92370,6 +92370,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3424b7437980a164ca42d23e7fa83f38, type: 3}
+--- !u!95 &838640183 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2304382267811726673, guid: 3424b7437980a164ca42d23e7fa83f38,
+    type: 3}
+  m_PrefabInstance: {fileID: 838640182}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &880886204
 GameObject:
   m_ObjectHideFlags: 0
@@ -92415,9 +92421,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneIdx: 0
   scenes:
-  - SampleScene
+  - MainMenu
   - TutorialScene
   - Level1
+  transitionTime: 0
 --- !u!114 &909356259 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1998291344941992247, guid: 3424b7437980a164ca42d23e7fa83f38,
@@ -92679,6 +92686,11 @@ PrefabInstance:
       propertyPath: pogImage
       value: 
       objectReference: {fileID: 759722228}
+    - target: {fileID: 6729644301039203432, guid: 382c7191a7dc522409521edfe0717093,
+        type: 3}
+      propertyPath: blackScreen
+      value: 
+      objectReference: {fileID: 838640183}
     - target: {fileID: 6729644301039203432, guid: 382c7191a7dc522409521edfe0717093,
         type: 3}
       propertyPath: pogImageMovePos
@@ -96742,7 +96754,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4835362812412026914}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.1000004, y: -2.4699998, z: -10}
+  m_LocalPosition: {x: -2.1000006, y: -2.4699998, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
