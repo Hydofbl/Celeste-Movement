@@ -1671,7 +1671,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1.3625, z: 1}
   m_Children: []
   m_Father: {fileID: 8243050658244731706}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1746,11 +1746,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8243050658244731706}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 156, y: 0}
+  m_AnchoredPosition: {x: 156, y: 65}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8243050656796652050
@@ -1788,7 +1788,10 @@ MonoBehaviour:
 
     New Text
 
-    New Text'
+    New Text
+
+    New
+    Text'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2380,8 +2383,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8243050656906544095}
-  - {fileID: 8243050656796652052}
   - {fileID: 8243050656736235631}
+  - {fileID: 8243050656796652052}
   - {fileID: 8243050656901378029}
   m_Father: {fileID: 4298868072582359596}
   m_RootOrder: 0
