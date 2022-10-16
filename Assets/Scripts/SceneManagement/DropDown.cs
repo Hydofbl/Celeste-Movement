@@ -19,4 +19,20 @@ public class DropDown : MonoBehaviour
             scenes[i] = Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i));
         }
     }
+    public void GetNextScene()
+    {
+        sceneIdx = PlayerPrefs.GetInt("Level", 0);
+        sceneIdx++;
+            PlayerPrefs.SetInt("Level", sceneIdx);
+
+        if(sceneIdx>scenes.Length)
+        {
+            sceneIdx = 1;
+            PlayerPrefs.SetInt("Level", sceneIdx);
+        }
+        else
+        {
+            SceneManager.LoadScene(scenes[sceneIdx], LoadSceneMode.Single);
+        }
+    }
 }

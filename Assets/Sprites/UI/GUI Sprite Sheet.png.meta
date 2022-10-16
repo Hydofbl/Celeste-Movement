@@ -11,6 +11,18 @@ TextureImporter:
   - first:
       213: -920562126823437766
     second: GUI Sprite Sheet_2
+  - first:
+      213: -732710021447901214
+    second: GUI Sprite Sheet_3
+  - first:
+      213: 6192561110111374924
+    second: GUI Sprite Sheet_4
+  - first:
+      213: 7928088225562270801
+    second: GUI Sprite Sheet_5
+  - first:
+      213: 1081710444680411956
+    second: GUI Sprite Sheet_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -178,6 +190,90 @@ TextureImporter:
       bones: []
       spriteID: a3ac20d7f918933f0800000000000000
       internalID: -920562126823437766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI Sprite Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 48
+        width: 44
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ef9a381e14e4d5f0800000000000000
+      internalID: -732710021447901214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI Sprite Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 89
+        width: 30
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4e4612258560f550800000000000000
+      internalID: 6192561110111374924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI Sprite Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 73
+        width: 30
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15c98908c3a360e60800000000000000
+      internalID: 7928088225562270801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI Sprite Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 57
+        width: 30
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43b71051be1030f00800000000000000
+      internalID: 1081710444680411956
       vertices: []
       indices: 
       edges: []
