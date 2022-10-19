@@ -188,6 +188,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7599076463620968975, guid: 4e42d95ab9ad12f4c813f54bb1d67f72,
+        type: 3}
+      propertyPath: m_Follow
+      value: 
+      objectReference: {fileID: 3634198818674262193}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e42d95ab9ad12f4c813f54bb1d67f72, type: 3}
 --- !u!4 &1332144416871812316
@@ -555,6 +560,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cb07d521ca31904995a07e0e53a49f9, type: 3}
+--- !u!4 &3634198818674262193 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4198215689787181846, guid: 7cb07d521ca31904995a07e0e53a49f9,
+    type: 3}
+  m_PrefabInstance: {fileID: 3634198818674262192}
+  m_PrefabAsset: {fileID: 0}
 --- !u!19719996 &3634198818770782153
 TilemapCollider2D:
   m_ObjectHideFlags: 0
