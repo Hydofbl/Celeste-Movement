@@ -9,18 +9,13 @@ public class SFXButton : MonoBehaviour, IPointerDownHandler
     public GameObject disabledImage;
     private  int isActive; // 1 is active 0 is inactive
     private Button button;
-    // Start is called before the first frame update
+    
     void Start()
     {
         button = GetComponent<Button>();
         CheckActivity();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
     public void CheckActivity()
     {
         isActive = PlayerPrefs.GetInt("sfx", 1);
@@ -33,16 +28,17 @@ public class SFXButton : MonoBehaviour, IPointerDownHandler
             Close();
         }
     }
+    
     public void Open()
     {
         disabledImage.SetActive(false);
         button.interactable = true;
     }
+    
     public void Close()
     {
         disabledImage.SetActive(true);
         button.interactable = false;
-
     }
 
     public void OnPointerDown(PointerEventData eventData)

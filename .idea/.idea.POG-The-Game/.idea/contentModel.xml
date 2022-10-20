@@ -7,6 +7,9 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="Editor" t="Include">
+          <e p="SceneController.cs" t="Include" />
+        </e>
         <e p="Resources" t="Include">
           <e p="Demigiant" t="Include">
             <e p="DemiLib" t="Include">
@@ -137,6 +140,11 @@
             <e p="ResponseHandler.cs" t="Include" />
             <e p="TypeWriterEffect.cs" t="Include" />
           </e>
+          <e p="HighScore" t="Include">
+            <e p="HighScoreRead.cs" t="Include" />
+            <e p="OpenTable.cs" t="Include" />
+            <e p="SubmitScoreButton.cs" t="Include" />
+          </e>
           <e p="Managers" t="Include">
             <e p="UIManager.cs" t="Include" />
           </e>
@@ -154,8 +162,15 @@
               <e p="JumpButton.cs" t="Include" />
             </e>
             <e p="MainMenu.cs" t="Include" />
+            <e p="MusicButton.cs" t="Include" />
             <e p="OptionsButton.cs" t="Include" />
+            <e p="PauseButton.cs" t="Include" />
             <e p="ResetButton.cs" t="Include" />
+            <e p="ResetTableButton.cs" t="Include" />
+            <e p="ResumeButton.cs" t="Include" />
+            <e p="ReturnMenuButton.cs" t="Include" />
+            <e p="ScoreText.cs" t="Include" />
+            <e p="SFXButton.cs" t="Include" />
             <e p="StartButton.cs" t="Include" />
           </e>
           <e p="Player" t="Include">
@@ -165,6 +180,7 @@
             <e p="GhostTrail.cs" t="Include" />
             <e p="Movement.cs" t="Include" />
             <e p="MovementButton.cs" t="Include" />
+            <e p="RestartLevel.cs" t="Include" />
             <e p="SimpleCameraController.cs" t="Include" />
           </e>
           <e p="RippleEffect" t="Include">
@@ -173,13 +189,17 @@
           </e>
           <e p="SceneManagement" t="Include">
             <e p="DropDown.cs" t="Include" />
-            <e p="SceneController.cs" t="Include" />
           </e>
           <e p="Sound" t="Include">
             <e p="SoundManagerScript.cs" t="Include" />
           </e>
           <e p="Tilemap" t="Include">
             <e p="DisappearingTilemap.cs" t="Include" />
+          </e>
+        </e>
+        <e p="StreamingAssets" t="Include">
+          <e p="High Score" t="Include">
+            <e p="HighScore.txt" t="Include" />
           </e>
         </e>
         <e p="ThirdParty" t="Include">

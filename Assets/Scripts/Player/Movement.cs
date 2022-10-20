@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 
@@ -11,7 +9,9 @@ public class Movement : MonoBehaviour
     public Rigidbody2D rb;
     private AnimationScript anim;
     private DialogInteraction dialogInteraction;
+    private SoundManagerScript sound;
     private Vector3 _startPos;
+    
     [Space]
     [Header("Stats")]
     public float speed = 10;
@@ -58,6 +58,7 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<AnimationScript>();
         dialogInteraction = GetComponent<DialogInteraction>();
+        sound = GetComponentInChildren<SoundManagerScript>();
         _startPos = transform.position;
     }
 
@@ -241,6 +242,9 @@ public class Movement : MonoBehaviour
         side = anim.sr.flipX ? -1 : 1;
 
         jumpParticle.Play();
+        
+        if(PlayerPrefs.GetInt("sfx") == 1)
+            sound.PlaySound("land");
     }
 
     private void Dash(float x, float y)
@@ -270,6 +274,8 @@ public class Movement : MonoBehaviour
         DOVirtual.Float(14, 0, .8f, RigidbodyDrag);
 
         dashParticle.Play();
+        if(PlayerPrefs.GetInt("sfx") == 1)
+            sound.PlaySound("dash");
         rb.gravityScale = 0;
         GetComponent<BetterJumping>().enabled = false;
         wallJumped = true;
@@ -325,6 +331,9 @@ public class Movement : MonoBehaviour
         float push = pushingWall ? 0 : rb.velocity.x;
 
         rb.velocity = new Vector2(push, -slideSpeed);
+        
+        if(PlayerPrefs.GetInt("sfx") == 1)
+            sound.PlaySound("slide");
     }
 
     private void Walk(Vector2 dir)
@@ -343,6 +352,9 @@ public class Movement : MonoBehaviour
         {
             rb.velocity = Vector2.Lerp(rb.velocity, (new Vector2(dir.x * speed, rb.velocity.y)), wallJumpLerp * Time.deltaTime);
         }
+        
+        if(PlayerPrefs.GetInt("sfx") == 1)
+            sound.PlaySound("walk");
     }
     private void Climb(Vector2 dir)
     {
@@ -386,6 +398,9 @@ public class Movement : MonoBehaviour
 
         particle.Play();
         // jumped = false;
+        
+        if(PlayerPrefs.GetInt("sfx") == 1)
+            sound.PlaySound("jump");
     }
 
     IEnumerator DisableMovement(float time)
