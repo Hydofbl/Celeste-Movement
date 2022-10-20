@@ -127,7 +127,8 @@ public class Movement : MonoBehaviour
 
         if (coll.onWall && Input.GetButton("Fire3") && canMove)
         {
-            
+            if (side != coll.wallSide)
+                anim.Flip(side * -1);
             wallGrab = true;
             wallSlide = false;
         }
