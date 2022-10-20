@@ -28,6 +28,10 @@ public class RestartLevel : MonoBehaviour
         movement.Restart();
         transform.parent = movement.transform;
         transform.localPosition = Vector3.zero;
+        foreach(MovingObject movingObject in FindObjectsOfType<MovingObject>())
+        {
+            movingObject.Restart();
+        }
         gameObject.SetActive(false);
         UIManager.Instance.EndTransition();
         yield return new WaitForSeconds(0.5f);
