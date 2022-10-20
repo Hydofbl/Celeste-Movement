@@ -63000,6 +63000,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &7820493640332837883 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2304382267811726673, guid: 3424b7437980a164ca42d23e7fa83f38,
+    type: 3}
+  m_PrefabInstance: {fileID: 7820493640332837874}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7820493640452765242
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63022,6 +63028,11 @@ PrefabInstance:
       propertyPath: pogScore
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6729644301039203432, guid: 382c7191a7dc522409521edfe0717093,
+        type: 3}
+      propertyPath: blackScreen
+      value: 
+      objectReference: {fileID: 7820493640332837883}
     - target: {fileID: 6729644301039203432, guid: 382c7191a7dc522409521edfe0717093,
         type: 3}
       propertyPath: pogImageMovePos

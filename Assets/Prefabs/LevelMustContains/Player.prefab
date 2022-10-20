@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 3037551057064948036}
   - component: {fileID: 3037551057064948037}
   - component: {fileID: 3037551057064948042}
+  - component: {fileID: 1275513165}
   m_Layer: 0
   m_Name: DeathAnimation
   m_TagString: Untagged
@@ -192,7 +193,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.0097656}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -217,6 +218,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1275513165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3037551057064948039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49a95efcedfe78d43b8a66a0e6631d2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {fileID: 4198215689787181847}
 --- !u!1 &4198215688740562078
 GameObject:
   m_ObjectHideFlags: 0

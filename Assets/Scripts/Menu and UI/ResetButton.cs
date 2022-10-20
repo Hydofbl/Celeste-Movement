@@ -19,5 +19,7 @@ public class ResetButton : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         PlayerPrefs.DeleteAll();
+        FindObjectOfType<MusicButton>().CheckActivity();
+        FindObjectOfType<SFXButton>().CheckActivity();
     }
 }

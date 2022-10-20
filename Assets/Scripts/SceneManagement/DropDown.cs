@@ -55,4 +55,10 @@ public class DropDown : MonoBehaviour
     {
         return SceneManager.GetActiveScene().name;
     }
+    public IEnumerator ReturnMenu()
+    {
+        UIManager.Instance.StartTransition();
+        yield return new WaitForSeconds(transitionTime);
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
+    }
 }

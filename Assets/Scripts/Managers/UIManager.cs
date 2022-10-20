@@ -16,12 +16,12 @@ public class UIManager : Singleton<UIManager>
     // Start is called before the first frame update
     void Start()
     {
-        if (!FindObjectOfType<DropDown>().GetCurrentSceneName().Equals("MainMenu"))
-        {
-            blackScreen.enabled = true;
-        AssignPogValue();
-        } 
         pogScore = PlayerPrefs.GetInt("PogScore", 0);
+        blackScreen.enabled = true;
+        if (!FindObjectOfType<DropDown>().GetCurrentSceneName().Equals("MainMenu") && !FindObjectOfType<DropDown>().GetCurrentSceneName().Equals("HighScoreScene"))
+        {
+            AssignPogValue();
+        }
     }
 
     // Update is called once per frame
@@ -43,5 +43,10 @@ public class UIManager : Singleton<UIManager>
     {
         blackScreen.enabled = true;
         blackScreen.SetTrigger("start");
+    }
+    public void EndTransition()
+    {
+        blackScreen.enabled = true;
+        blackScreen.Play("End");
     }
 }

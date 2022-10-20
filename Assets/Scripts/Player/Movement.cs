@@ -11,7 +11,7 @@ public class Movement : MonoBehaviour
     public Rigidbody2D rb;
     private AnimationScript anim;
     private DialogInteraction dialogInteraction;
-
+    private Vector3 _startPos;
     [Space]
     [Header("Stats")]
     public float speed = 10;
@@ -50,7 +50,7 @@ public class Movement : MonoBehaviour
     public bool jumped;
     public bool dashButton;
     public bool climbButton;
-
+    
     void Start()
     {
         Application.targetFrameRate = 60;
@@ -58,6 +58,7 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<AnimationScript>();
         dialogInteraction = GetComponent<DialogInteraction>();
+        _startPos = transform.position;
     }
 
     void Update()
@@ -365,8 +366,10 @@ public class Movement : MonoBehaviour
         if (coll.onDeath && canMove)
         {
             canMove = false;
+            deathAnimation.gameObject.SetActive(true);
             deathAnimation.enabled = true;
             deathAnimation.GetComponent<SpriteRenderer>().enabled = true;
+            deathAnimation.Play(0);
             deathAnimation.transform.SetParent(null);
             gameObject.SetActive(false);
         }
@@ -416,5 +419,17 @@ public class Movement : MonoBehaviour
     {
         int particleSide = coll.onRightWall ? 1 : -1;
         return particleSide;
+    }
+    public void Restart()
+    {
+        gameObject.SetActive(true);
+        transform.position = _startPos;
+        coll.onDeath = false;
+        coll.onGround = false;
+        coll.onIvy = false;
+        coll.onLeftWall = false;
+        coll.onRightWall = false;
+        coll.onWall = false;
+        canMove = true;
     }
 }
