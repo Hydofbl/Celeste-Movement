@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ExitButton : MonoBehaviour
+public class ExitButton : MonoBehaviour, IPointerDownHandler
 {
     // Start is called before the first frame update
     void Start()
