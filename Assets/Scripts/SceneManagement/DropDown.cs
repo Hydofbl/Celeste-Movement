@@ -61,4 +61,10 @@ public class DropDown : MonoBehaviour
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
+    public IEnumerator OpenHighScoresMenu()
+    {
+        UIManager.Instance.StartTransition();
+        yield return new WaitForSeconds(transitionTime);
+        SceneManager.LoadScene(scenes.Length-1, LoadSceneMode.Single);
+    }
 }

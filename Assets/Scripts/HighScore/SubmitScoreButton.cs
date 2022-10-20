@@ -14,7 +14,11 @@ public class SubmitScoreButton : MonoBehaviour, IPointerDownHandler
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(PlayerPrefs.GetInt("fromMenu")==1)
+        {
+            submitField.SetActive(false);
+            tableField.SetActive(true);
+        }
 
     }
 
