@@ -23,7 +23,7 @@ public class MusicButton : MonoBehaviour, IPointerDownHandler
     }
     public void CheckActivity()
     {
-        isActive = PlayerPrefs.GetInt("voice", 1);
+        isActive = PlayerPrefs.GetInt("music", 1);
         if(isActive==1)
         {
             Open();
@@ -57,6 +57,6 @@ public class MusicButton : MonoBehaviour, IPointerDownHandler
             isActive = 1;
             Open();
         }
-        PlayerPrefs.SetInt("voice", isActive);
+        PlayerPrefs.SetInt("music", isActive);
     }
 }
