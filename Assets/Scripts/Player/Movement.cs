@@ -11,6 +11,7 @@ public class Movement : MonoBehaviour
     public Rigidbody2D rb;
     private AnimationScript anim;
     private DialogInteraction dialogInteraction;
+    private SoundManagerScript sound;
 
     [Space]
     [Header("Stats")]
@@ -58,6 +59,7 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<AnimationScript>();
         dialogInteraction = GetComponent<DialogInteraction>();
+        sound = GetComponentInChildren<SoundManagerScript>();
     }
 
     void Update()
@@ -240,6 +242,7 @@ public class Movement : MonoBehaviour
         side = anim.sr.flipX ? -1 : 1;
 
         jumpParticle.Play();
+        sound.PlaySound("land");
     }
 
     private void Dash(float x, float y)
@@ -269,6 +272,7 @@ public class Movement : MonoBehaviour
         DOVirtual.Float(14, 0, .8f, RigidbodyDrag);
 
         dashParticle.Play();
+        sound.PlaySound("dash");
         rb.gravityScale = 0;
         GetComponent<BetterJumping>().enabled = false;
         wallJumped = true;
@@ -324,6 +328,7 @@ public class Movement : MonoBehaviour
         float push = pushingWall ? 0 : rb.velocity.x;
 
         rb.velocity = new Vector2(push, -slideSpeed);
+        sound.PlaySound("slide");
     }
 
     private void Walk(Vector2 dir)
@@ -342,7 +347,9 @@ public class Movement : MonoBehaviour
         {
             rb.velocity = Vector2.Lerp(rb.velocity, (new Vector2(dir.x * speed, rb.velocity.y)), wallJumpLerp * Time.deltaTime);
         }
+        sound.PlaySound("walk");
     }
+    
     private void Climb(Vector2 dir)
     {
         if (!canMove)
@@ -382,6 +389,7 @@ public class Movement : MonoBehaviour
         rb.velocity += dir * jumpForce;
 
         particle.Play();
+        sound.PlaySound("jump");
         // jumped = false;
     }
 
