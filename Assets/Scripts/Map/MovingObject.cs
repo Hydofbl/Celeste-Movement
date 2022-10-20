@@ -76,37 +76,9 @@ public class MovingObject : MonoBehaviour
             _isMoving = false;*/
         }
     }
-    private void Move()
+    public void Restart()
     {
-        if (!_isMoving)
-        {
-            _isMoving = true;
-
-           /* if (!_atTargetPos)
-            {
-                transform.DOMove(_targetPos, moveTime * Vector2.Distance(transform.position, _targetPos)).SetEase(Ease.Linear).OnComplete(() =>
-                {
-                    _isMoving = false;
-                    _atTargetPos = true;
-                    Move();
-                    
-                });
-            }
-            else
-            {
-                transform.DOMove(_startPos, moveTime * Vector2.Distance(transform.position, _startPos)).SetEase(Ease.Linear).OnComplete(() =>
-                {
-                    _isMoving = false;
-                    _atTargetPos = false;
-                    Move();
-
-                });
-            }*/
-        }
-    }
-    private void StopMove()
-    {
-        _isMoving = false;
-        transform.DOKill(false);
+        transform.position = _startPos;
+        _atTargetPos = false;
     }
 }
