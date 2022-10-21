@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a28d15c871fa5e45a94148582c6d696, type: 3}
-  m_Name: Bisa
+  m_Name: "\u0130rem"
   m_EditorClassIdentifier: 
   character:
-    name: 1
-  portrait: {fileID: 21300000, guid: 4ad77359f1804ab4b8cba026b380f233, type: 3}
+    name: 3
+  portrait: {fileID: 21300000, guid: 068ba6901eb3b6148886eeed688ce4d7, type: 3}
