@@ -16,13 +16,107 @@ MonoBehaviour:
   RightSpeaker: {fileID: 0}
   dialog:
   - speaker: 0
-    text: Maraba Bayan
+    text: "Buraya kadar gelebildi\u011Fine g\xF6re..."
   - speaker: 0
-    text: "Benim Ad\u0131m Matuhan Betin"
+    text: "...high score tablosuna girebilecek misin bakal\u0131m. \n"
   - speaker: 0
     text: c
   - speaker: 0
     text: d
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
+  - speaker: 0
+    text: e
   - speaker: 0
     text: e
   responses: []

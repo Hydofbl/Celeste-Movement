@@ -16,13 +16,8 @@ MonoBehaviour:
   RightSpeaker: {fileID: 0}
   dialog:
   - speaker: 0
-    text: Maraba Bayan
+    text: "Yeni bir macerac\u0131 daha ha? \n"
   - speaker: 0
-    text: "Benim Ad\u0131m Matuhan Betin"
-  - speaker: 0
-    text: c
-  - speaker: 0
-    text: d
-  - speaker: 0
-    text: e
+    text: "POG stant\u0131na ho\u015F geldin umar\u0131m bu zorlu yolculu\u011Fa
+      kendini haz\u0131rlam\u0131\u015Fs\u0131nd\u0131r.\n"
   responses: []

@@ -16,13 +16,7 @@ MonoBehaviour:
   RightSpeaker: {fileID: 0}
   dialog:
   - speaker: 0
-    text: Maraba Bayan
+    text: "Bu tarz oyunlar ve projelerle kendini geli\u015Ftirmek istiyorsan..."
   - speaker: 0
-    text: "Benim Ad\u0131m Matuhan Betin"
-  - speaker: 0
-    text: c
-  - speaker: 0
-    text: d
-  - speaker: 0
-    text: e
+    text: "DO\u011ERU YERE GELD\u0130N!"
   responses: []

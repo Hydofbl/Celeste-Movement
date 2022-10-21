@@ -16,13 +16,7 @@ MonoBehaviour:
   RightSpeaker: {fileID: 0}
   dialog:
   - speaker: 0
-    text: Maraba Bayan
+    text: WOW!
   - speaker: 0
-    text: "Benim Ad\u0131m Matuhan Betin"
-  - speaker: 0
-    text: c
-  - speaker: 0
-    text: d
-  - speaker: 0
-    text: e
+    text: "Bu gidi\u015Fle birinci olacaks\u0131n gibi duruyor"
   responses: []

@@ -16,13 +16,7 @@ MonoBehaviour:
   RightSpeaker: {fileID: 0}
   dialog:
   - speaker: 0
-    text: Maraba Bayan
+    text: "Tamam art\u0131k bu kadar bilgilendirme yeter. "
   - speaker: 0
-    text: "Benim Ad\u0131m Matuhan Betin"
-  - speaker: 0
-    text: c
-  - speaker: 0
-    text: d
-  - speaker: 0
-    text: e
+    text: " \u015Eimdi biraz ciddile\u015Fme zaman\u0131 \n"
   responses: []

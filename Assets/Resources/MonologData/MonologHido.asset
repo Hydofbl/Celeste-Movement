@@ -16,13 +16,11 @@ MonoBehaviour:
   RightSpeaker: {fileID: 0}
   dialog:
   - speaker: 0
-    text: Maraba Bayan
+    text: "\u0130lk b\xF6l\xFCm\xFC bilgin olmadan nas\u0131l bitirdin inanam\u0131yorum
+      \xE7ok yetenekli oldu\u011Funu tahmin ediyorum ..."
   - speaker: 0
-    text: "Benim Ad\u0131m Matuhan Betin"
+    text: "...ama gene de biraz bilgi alman gerekiyor \n"
   - speaker: 0
-    text: c
-  - speaker: 0
-    text: d
-  - speaker: 0
-    text: e
+    text: "Bu yolculuk bir \xE7ok ki\u015Finin deste\u011Fi ile yarat\u0131ld\u0131.
+      \n"
   responses: []
