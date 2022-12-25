@@ -68117,6 +68117,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5845432052291341118, guid: 7cb07d521ca31904995a07e0e53a49f9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7201749361030705890}
+    - target: {fileID: 5845432052291341118, guid: 7cb07d521ca31904995a07e0e53a49f9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PassDialogEvent
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cb07d521ca31904995a07e0e53a49f9, type: 3}
 --- !u!4 &4000911113618733499 stripped
@@ -69973,7 +69983,7 @@ PrefabInstance:
     - target: {fileID: 7599076463620968974, guid: 4e42d95ab9ad12f4c813f54bb1d67f72,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.870001
+      value: -5.8700004
       objectReference: {fileID: 0}
     - target: {fileID: 7599076463620968974, guid: 4e42d95ab9ad12f4c813f54bb1d67f72,
         type: 3}
@@ -70620,7 +70630,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8402801760643506755}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.870001, y: -4.67, z: -10}
+  m_LocalPosition: {x: -5.8700004, y: -4.67, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

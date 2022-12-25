@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class Movement : MonoBehaviour
     public float slideSpeed = 5;
     public float wallJumpLerp = 10;
     public float dashSpeed = 20;
+
+    private float x, y,  xRaw, yRaw;
 
     [Space]
     [Header("Booleans")]
@@ -46,10 +49,9 @@ public class Movement : MonoBehaviour
 
     [Space]
     [Header("Buttons")]
-    public bool jumpButton;
-    public bool jumped;
-    public bool dashButton;
-    public bool climbButton;
+    public bool jumpPressed;
+    public bool dashPressed;
+    public bool isHanging;
     
     void Start()
     {
@@ -66,51 +68,13 @@ public class Movement : MonoBehaviour
     {
         if (dialogInteraction.DialogUI.IsOpen) return;
 
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
-        float xRaw = Input.GetAxisRaw("Horizontal");
-        float yRaw = Input.GetAxisRaw("Vertical");
-
-        /*
-        float x = dynamicJoystick.Direction.x;
-        float y = dynamicJoystick.Direction.y;
-        float xRaw = 0;
-        float yRaw = 0;
-        if (dynamicJoystick.Direction.x != 0)
-        {
-            if (dynamicJoystick.Direction.x > 0.3f)
-            {
-                xRaw = 1;
-            }
-            else if (dynamicJoystick.Direction.x < -0.3f)
-            {
-                xRaw = -1;
-
-            }
-        }
-
-        if (dynamicJoystick.Direction.y != 0)
-        {
-            if (dynamicJoystick.Direction.y > 0.3f)
-            {
-                yRaw = 1;
-            }
-            else if (dynamicJoystick.Direction.y < -0.3f)
-            {
-                yRaw = -1;
-            }
-        } 
-        */
-
-        // Vector2 dir = dynamicJoystick.Direction;
         Vector2 dir = new Vector2(x, y);
         CheckDeath();
         Walk(dir);
         Climb(dir);
         anim.SetHorizontalMovement(x, y, rb.velocity.y);
 
-        /*
-        if (coll.onWall && climbButton && canMove)
+        if (coll.onWall && isHanging && canMove)
         {
             if (side != coll.wallSide)
                 anim.Flip(side * -1);
@@ -118,25 +82,26 @@ public class Movement : MonoBehaviour
             wallSlide = false;
         }
 
-        if (!climbButton || !coll.onWall || !canMove)
+        if (!isHanging || !coll.onWall || !canMove)
         {
             wallGrab = false;
             wallSlide = false;
         }
-        */
 
-        if (coll.onWall && Input.GetButton("Fire3") && canMove)
+        if (jumpPressed)
         {
-            if (side != coll.wallSide)
-                anim.Flip(side * -1);
-            wallGrab = true;
-            wallSlide = false;
+            anim.SetTrigger("jump");
+
+            if (coll.onGround)
+                Jump(Vector2.up, false);
+            if (coll.onWall && !coll.onGround)
+                WallJump();
         }
 
-        if (Input.GetButtonUp("Fire3") || !coll.onWall || !canMove)
+        if (dashPressed && !hasDashed)
         {
-            wallGrab = false;
-            wallSlide = false;
+            if (xRaw != 0 || yRaw != 0)
+                Dash(xRaw, yRaw);
         }
 
         if (coll.onGround && !isDashing)
@@ -171,40 +136,6 @@ public class Movement : MonoBehaviour
 
         if (!coll.onWall || coll.onGround)
             wallSlide = false;
-
-        /*
-        if (jumped)
-        {
-            anim.SetTrigger("jump");
-
-            if (coll.onGround)
-                Jump(Vector2.up, false);
-            if (coll.onWall && !coll.onGround)
-                WallJump();
-        }
-
-        if (dashButton && !hasDashed)
-        {
-            if (xRaw != 0 || yRaw != 0)
-                Dash(xRaw, yRaw);
-        }
-        */
-
-        if (Input.GetButtonDown("Jump"))
-        {
-            anim.SetTrigger("jump");
-
-            if (coll.onGround)
-                Jump(Vector2.up, false);
-            if (coll.onWall && !coll.onGround)
-                WallJump();
-        }
-
-        if (Input.GetButtonDown("Fire1") && !hasDashed)
-        {
-            if (xRaw != 0 || yRaw != 0)
-                Dash(xRaw, yRaw);
-        }
 
         if (coll.onGround && !groundTouch)
         {
@@ -263,7 +194,6 @@ public class Movement : MonoBehaviour
         Vector2 dir = new Vector2(x, y);
 
         rb.velocity += dir.normalized * dashSpeed;
-        // dashButton = false;
         StartCoroutine(DashWait());
     }
 
@@ -356,6 +286,7 @@ public class Movement : MonoBehaviour
         if(PlayerPrefs.GetInt("sfx") == 1)
             sound.PlaySound("walk");
     }
+    
     private void Climb(Vector2 dir)
     {
         if (!canMove)
@@ -373,6 +304,7 @@ public class Movement : MonoBehaviour
              rb.velocity = Vector2.Lerp(rb.velocity, (new Vector2(dir.x * speed, rb.velocity.y)), wallJumpLerp * Time.deltaTime);
          }*/
     }
+    
     private void CheckDeath()
     {
         if (coll.onDeath && canMove)
@@ -386,6 +318,7 @@ public class Movement : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+    
     private void Jump(Vector2 dir, bool wall)
     {
         if (!canMove)
@@ -397,7 +330,6 @@ public class Movement : MonoBehaviour
         rb.velocity += dir * jumpForce;
 
         particle.Play();
-        // jumped = false;
         
         if(PlayerPrefs.GetInt("sfx") == 1)
             sound.PlaySound("jump");
@@ -435,6 +367,7 @@ public class Movement : MonoBehaviour
         int particleSide = coll.onRightWall ? 1 : -1;
         return particleSide;
     }
+    
     public void Restart()
     {
         gameObject.SetActive(true);
@@ -447,4 +380,57 @@ public class Movement : MonoBehaviour
         coll.onWall = false;
         canMove = true;
     }
+
+    #region Events
+    public void MoveEvent(InputAction.CallbackContext context)
+    {
+        Vector2 dir = context.ReadValue<Vector2>();
+        Vector2 dirNorm = dir.normalized;
+
+        x = dir.x;
+        y = dir.y;
+
+        xRaw = dirNorm.x;
+        yRaw = dirNorm.y;
+    }
+
+    public void JumpEvent(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            jumpPressed = true;
+        }
+
+        if (context.canceled)
+        {
+            jumpPressed = false;
+        }
+    }
+
+    public void DashEvent(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            dashPressed = true;
+        }
+
+        if (context.canceled)
+        {
+            dashPressed = false;
+        }
+    }
+
+    public void HangEvent(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            isHanging = true;
+        }
+
+        if (context.canceled)
+        {
+            isHanging = false;
+        }
+    }
+    #endregion
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 [Serializable]
 public struct SpeakerComps
@@ -22,7 +23,8 @@ public class DialogUI : MonoBehaviour
     [SerializeField] private TMP_Text textLabel;
 
     public bool IsOpen { get; private set; }
-    
+
+    private bool passDialog;
     private ResponseHandler responseHandler;
     private TypeWriterEffect typeWriterEffect;
     
@@ -71,7 +73,7 @@ public class DialogUI : MonoBehaviour
             // wait for 1 more frame
             yield return null;
             // Space basılana kadar bekle.
-            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
+            yield return new WaitUntil(() => passDialog);
         }
 
         if (dialogObject.HasResponses)
@@ -144,6 +146,18 @@ public class DialogUI : MonoBehaviour
         {
             rightSpeaker.image.overrideSprite = dialogObject.RightSpeaker.portrait;
             rightSpeaker.name.text = dialogObject.RightSpeaker.name;
+        }
+    }
+
+    public void PassDialogEvent(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            passDialog = true;
+        }
+        else if(context.canceled)
+        {
+            passDialog = false;
         }
     }
 }

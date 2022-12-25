@@ -14,13 +14,21 @@
           <e p="Demigiant" t="Include">
             <e p="DemiLib" t="Include">
               <e p="Core" t="Include">
+                <e p="DemiLib.dll" t="Include" />
                 <e p="DemiLib.xml" t="Include" />
                 <e p="Editor" t="Include">
+                  <e p="DemiEditor.dll" t="Include" />
                   <e p="DemiEditor.xml" t="Include" />
                 </e>
               </e>
             </e>
             <e p="DOTween" t="Include">
+              <e p="DOTween.dll" t="Include" />
+              <e p="DOTween.XML" t="Include" />
+              <e p="Editor" t="Include">
+                <e p="DOTweenEditor.dll" t="Include" />
+                <e p="DOTweenEditor.XML" t="Include" />
+              </e>
               <e p="Modules" t="Include">
                 <e p="DOTweenModuleAudio.cs" t="Include" />
                 <e p="DOTweenModulePhysics.cs" t="Include" />
@@ -34,12 +42,16 @@
             </e>
             <e p="DOTweenPro" t="Include">
               <e p="DOTweenAnimation.cs" t="Include" />
+              <e p="DOTweenPro.dll" t="Include" />
+              <e p="DOTweenPro.XML" t="Include" />
               <e p="DOTweenProShortcuts.cs" t="Include" />
               <e p="DOTweenTextMeshPro.cs" t="Include" />
               <e p="DOTweenTk2d.cs" t="Include" />
               <e p="Editor" t="Include">
                 <e p="DOTweenAnimationInspector.cs" t="Include" />
                 <e p="DOTweenPreviewManager.cs" t="Include" />
+                <e p="DOTweenProEditor.dll" t="Include" />
+                <e p="DOTweenProEditor.XML" t="Include" />
               </e>
               <e p="readme.txt" t="Include" />
             </e>
@@ -169,6 +181,7 @@
             <e p="ResetTableButton.cs" t="Include" />
             <e p="ResumeButton.cs" t="Include" />
             <e p="ReturnMenuButton.cs" t="Include" />
+            <e p="ScoresButton.cs" t="Include" />
             <e p="ScoreText.cs" t="Include" />
             <e p="SFXButton.cs" t="Include" />
             <e p="StartButton.cs" t="Include" />
@@ -176,6 +189,7 @@
           <e p="Player" t="Include">
             <e p="AnimationScript.cs" t="Include" />
             <e p="BetterJumping.cs" t="Include" />
+            <e p="ButtonsChecker.cs" t="Include" />
             <e p="Collision.cs" t="Include" />
             <e p="GhostTrail.cs" t="Include" />
             <e p="Movement.cs" t="Include" />
@@ -404,6 +418,7 @@
           <e p="ReplaceSelected" t="Include">
             <e p="Editor" t="Include">
               <e p="ReplaceSelected.cs" t="Include" />
+              <e p="sc.utilities.replace-selected.editor.asmdef" t="Include" />
             </e>
           </e>
         </e>
