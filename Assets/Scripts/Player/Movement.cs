@@ -5,14 +5,17 @@ using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
+    private static Movement _instance;
     private Collision coll;
     [HideInInspector]
     public Rigidbody2D rb;
+    [HideInInspector]
+    public static Movement Instance => _instance;
     private AnimationScript anim;
     private DialogInteraction dialogInteraction;
     private SoundManagerScript sound;
     private Vector3 _startPos;
-    
+
     [Space]
     [Header("Stats")]
     public float speed = 10;
@@ -52,7 +55,20 @@ public class Movement : MonoBehaviour
     public bool jumpPressed;
     public bool dashPressed;
     public bool isHanging;
-    
+    public string deviceName;
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
+
     void Start()
     {
         Application.targetFrameRate = 60;
@@ -392,6 +408,8 @@ public class Movement : MonoBehaviour
 
         xRaw = dirNorm.x;
         yRaw = dirNorm.y;
+
+        deviceName = context.control.device.displayName;
     }
 
     public void JumpEvent(InputAction.CallbackContext context)

@@ -1,10 +1,12 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DialogActivator : MonoBehaviour, IInteractable
 {
     [SerializeField] private DialogObject dialogObject;
-    
+    [SerializeField] private GameObject buttonParent;
+
     // Event ile bir konuşmanın tekrar tekrar yapılmasını engellemek amacıyla
     // NPC'nin final diyalog'u güncellenir.
     public void UpdateDialogObject(DialogObject dialogObject)
@@ -31,6 +33,7 @@ public class DialogActivator : MonoBehaviour, IInteractable
     {
         if (other.CompareTag("Player") && other.TryGetComponent(out DialogInteraction player))
         {
+            buttonParent.SetActive(true);
             player.Interactable = this;
         }
     }
@@ -41,6 +44,7 @@ public class DialogActivator : MonoBehaviour, IInteractable
         {
             if (player.Interactable is DialogActivator dialogActivator && dialogActivator == this)
             {
+                buttonParent.SetActive(false);
                 player.Interactable = null;
             }
         }

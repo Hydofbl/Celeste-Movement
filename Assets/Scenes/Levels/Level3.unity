@@ -11679,6 +11679,97 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1886211958
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 689792349872453428}
+    m_Modifications:
+    - target: {fileID: 8753554266680099364, guid: aeef1c125b0f97343b11ad3dc9ac970e,
+        type: 3}
+      propertyPath: m_Name
+      value: InteractButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 8753554266680099364, guid: aeef1c125b0f97343b11ad3dc9ac970e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8753554266680099365, guid: aeef1c125b0f97343b11ad3dc9ac970e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8753554266680099365, guid: aeef1c125b0f97343b11ad3dc9ac970e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8753554266680099365, guid: aeef1c125b0f97343b11ad3dc9ac970e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8753554266680099365, guid: aeef1c125b0f97343b11ad3dc9ac970e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8753554266680099365, guid: aeef1c125b0f97343b11ad3dc9ac970e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8753554266680099365, guid: aeef1c125b0f97343b11ad3dc9ac970e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8753554266680099365, guid: aeef1c125b0f97343b11ad3dc9ac970e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8753554266680099365, guid: aeef1c125b0f97343b11ad3dc9ac970e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8753554266680099365, guid: aeef1c125b0f97343b11ad3dc9ac970e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8753554266680099365, guid: aeef1c125b0f97343b11ad3dc9ac970e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8753554266680099365, guid: aeef1c125b0f97343b11ad3dc9ac970e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8753554266680099365, guid: aeef1c125b0f97343b11ad3dc9ac970e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aeef1c125b0f97343b11ad3dc9ac970e, type: 3}
+--- !u!4 &1886211959 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8753554266680099365, guid: aeef1c125b0f97343b11ad3dc9ac970e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1886211958}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1886211960 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8753554266680099364, guid: aeef1c125b0f97343b11ad3dc9ac970e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1886211958}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2076644118 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8693249834983517838, guid: 00f365a95813428459878119233e556c,
@@ -11761,7 +11852,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -24.73, y: 15.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1886211959}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11888,6 +11980,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogObject: {fileID: 11400000, guid: a700d02d8b104b34d8f177af372ffed6, type: 2}
+  buttonParent: {fileID: 1886211960}
 --- !u!156049354 &2990773489181138904
 Grid:
   m_ObjectHideFlags: 0
