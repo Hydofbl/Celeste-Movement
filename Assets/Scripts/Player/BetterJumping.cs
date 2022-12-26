@@ -23,6 +23,7 @@ public class BetterJumping : MonoBehaviour
         }
         else if(rb.velocity.y > 0 && !_movementCs.jumpPressed)
         {
+            _movementCs.coyoteTimeCounter = 0f;
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
     }

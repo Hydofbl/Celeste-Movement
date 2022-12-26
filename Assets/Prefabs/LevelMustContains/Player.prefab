@@ -494,6 +494,10 @@ MonoBehaviour:
   slideSpeed: 1
   wallJumpLerp: 5
   dashSpeed: 40
+  coyoteTime: 0.2
+  coyoteTimeCounter: 0
+  jumpBufferTime: 0.2
+  jumpBufferCounter: 0
   canMove: 1
   wallGrab: 0
   wallJumped: 0
@@ -509,6 +513,7 @@ MonoBehaviour:
   jumpPressed: 0
   dashPressed: 0
   isHanging: 0
+  deviceName: 
 --- !u!114 &4198215689787181844
 MonoBehaviour:
   m_ObjectHideFlags: 0

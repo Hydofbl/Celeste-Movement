@@ -23,6 +23,11 @@ public class Movement : MonoBehaviour
     public float slideSpeed = 5;
     public float wallJumpLerp = 10;
     public float dashSpeed = 20;
+    public float coyoteTime = 0.2f;
+    public float coyoteTimeCounter;
+    public float jumpBufferTime = 0.2f;
+    public float jumpBufferCounter;
+
 
     private float x, y,  xRaw, yRaw;
 
@@ -104,8 +109,32 @@ public class Movement : MonoBehaviour
             wallSlide = false;
         }
 
+        if (coll.onGround)
+        {
+            coyoteTimeCounter = coyoteTime;
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
+        }
+
         if (jumpPressed)
         {
+            jumpBufferCounter = jumpBufferTime;
+        }
+        else
+        {
+            jumpBufferCounter -= Time.deltaTime;
+        }
+
+        if(!jumpPressed && rb.velocity.y > 0f)
+        {
+            coyoteTimeCounter = 0f;
+        }
+
+        if (coyoteTimeCounter > 0f && jumpBufferCounter > 0f)
+        {
+            jumpBufferCounter = 0f;
             anim.SetTrigger("jump");
 
             if (coll.onGround)
