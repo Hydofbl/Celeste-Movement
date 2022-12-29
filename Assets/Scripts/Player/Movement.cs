@@ -127,11 +127,6 @@ public class Movement : MonoBehaviour
             jumpBufferCounter -= Time.deltaTime;
         }
 
-        if(!jumpPressed && rb.velocity.y > 0f)
-        {
-            coyoteTimeCounter = 0f;
-        }
-
         if (coyoteTimeCounter > 0f && jumpBufferCounter > 0f)
         {
             jumpBufferCounter = 0f;
