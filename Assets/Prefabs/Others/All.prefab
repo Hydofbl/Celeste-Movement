@@ -62486,6 +62486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogObject: {fileID: 11400000, guid: b1b8310ec3205f64a9066c74e31476b5, type: 2}
+  buttonParent: {fileID: 0}
 --- !u!114 &7563368192014216581
 MonoBehaviour:
   m_ObjectHideFlags: 0
