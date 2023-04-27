@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class AnimationScript : MonoBehaviour
 {
-
     private Animator anim;
     private Movement move;
     private Collision coll;
+
     [HideInInspector]
     public SpriteRenderer sr;
 
@@ -44,16 +44,13 @@ public class AnimationScript : MonoBehaviour
 
     public void Flip(int side)
     {
-
         if (move.wallGrab || move.wallSlide)
         {
             if (side == -1 && sr.flipX)
                 return;
 
             if (side == 1 && !sr.flipX)
-            {
                 return;
-            }
         }
 
         bool state = (side == 1) ? false : true;
