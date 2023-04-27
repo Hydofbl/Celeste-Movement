@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class AnimationScript : MonoBehaviour
 {
-
     private Animator anim;
     private Movement move;
     private Collision coll;
-    private bool isFlippedX;
-
-    [SerializeField] private Transform parentTransform;
 
     [HideInInspector]
     public SpriteRenderer sr;
@@ -50,22 +46,14 @@ public class AnimationScript : MonoBehaviour
     {
         if (move.wallGrab || move.wallSlide)
         {
-            if (side == -1 && isFlippedX)
+            if (side == -1 && sr.flipX)
                 return;
 
-            if (side == 1 && !isFlippedX)
+            if (side == 1 && !sr.flipX)
                 return;
         }
 
-        isFlippedX = (side == 1) ? false : true;
-
-        if (isFlippedX)
-        {
-            parentTransform.localScale = new Vector3(-1, parentTransform.localScale.y, parentTransform.localScale.z);
-        }
-        else
-        {
-            parentTransform.localScale = new Vector3(1, parentTransform.localScale.y, parentTransform.localScale.z);
-        }
+        bool state = (side == 1) ? false : true;
+        sr.flipX = state;
     }
 }
