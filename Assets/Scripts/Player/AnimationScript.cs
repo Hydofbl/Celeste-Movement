@@ -8,6 +8,10 @@ public class AnimationScript : MonoBehaviour
     private Animator anim;
     private Movement move;
     private Collision coll;
+    private bool isFlippedX;
+
+    [SerializeField] private Transform parentTransform;
+
     [HideInInspector]
     public SpriteRenderer sr;
 
@@ -44,19 +48,24 @@ public class AnimationScript : MonoBehaviour
 
     public void Flip(int side)
     {
-
         if (move.wallGrab || move.wallSlide)
         {
-            if (side == -1 && sr.flipX)
+            if (side == -1 && isFlippedX)
                 return;
 
-            if (side == 1 && !sr.flipX)
-            {
+            if (side == 1 && !isFlippedX)
                 return;
-            }
         }
 
-        bool state = (side == 1) ? false : true;
-        sr.flipX = state;
+        isFlippedX = (side == 1) ? false : true;
+
+        if (isFlippedX)
+        {
+            parentTransform.localScale = new Vector3(-1, parentTransform.localScale.y, parentTransform.localScale.z);
+        }
+        else
+        {
+            parentTransform.localScale = new Vector3(1, parentTransform.localScale.y, parentTransform.localScale.z);
+        }
     }
 }

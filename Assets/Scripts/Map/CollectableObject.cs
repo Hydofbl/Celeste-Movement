@@ -6,17 +6,7 @@ using UnityEngine;
 public class CollectableObject : MonoBehaviour
 {
     public GameObject pogToMove;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -24,6 +14,7 @@ public class CollectableObject : MonoBehaviour
             MovePog();
         }
     }
+
     private void MovePog()
     {
         GetComponent<SpriteRenderer>().enabled = false;
