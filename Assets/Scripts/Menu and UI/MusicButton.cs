@@ -16,14 +16,15 @@ public class MusicButton : MonoBehaviour, IPointerDownHandler
         CheckActivity();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void CheckActivity()
     {
-        isActive = PlayerPrefs.GetInt("music", 1);
+        if (!PlayerPrefs.HasKey("music"))
+        {
+            PlayerPrefs.SetInt("music", 1);
+        }
+
+        isActive = PlayerPrefs.GetInt("music");
+
         if(isActive==1)
         {
             Open();

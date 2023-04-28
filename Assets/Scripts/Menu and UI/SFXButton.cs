@@ -15,11 +15,17 @@ public class SFXButton : MonoBehaviour, IPointerDownHandler
         button = GetComponent<Button>();
         CheckActivity();
     }
-    
+
     public void CheckActivity()
     {
-        isActive = PlayerPrefs.GetInt("sfx", 1);
-        if(isActive==1)
+        if (!PlayerPrefs.HasKey("sfx"))
+        {
+            PlayerPrefs.SetInt("sfx", 1);
+        }
+
+        isActive = PlayerPrefs.GetInt("sfx");
+
+        if (isActive==1)
         {
             Open();
         }

@@ -47,7 +47,7 @@ public class SoundManagerScript : MonoBehaviour
 
     public void Step()
     {
-        if(PlayerPrefs.GetInt("sfx",1) == 1)
+        if (PlayerPrefs.GetInt("sfx") == 1)
         {
             AudioClip clip = GetRandomClip();
             source.PlayOneShot(clip);
