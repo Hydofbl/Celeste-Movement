@@ -1,3 +1,5 @@
-## Built With
+## Description
+POG The Game is a puzzle platformer game developed to introducing the POG student club.
 
-* [DOTween](http://dotween.demigiant.com/) - DOTween is a fast, efficient, fully type-safe object-oriented animation engine for Unity, optimized for C# users, free and open-source, with tons of advanced features
+* You can try the game [here](https://hydofbl.itch.io/pog-the-game).
+* You can browse my [itch.io profile](https://hydofbl.itch.io/pog-the-game) to review my other games.
